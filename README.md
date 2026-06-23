@@ -1,4 +1,11 @@
-# LiveChat — Real-Time Chat Application
+# LiveChat -> Real-Time Chat Application
+## Demo Features
+
+- Real-time multi-user chat
+- WebSocket-based communication
+- Online user tracking
+- Join/leave notifications
+- Responsive dark-themed UI
 
 A clean, real-time chat application built with **Python FastAPI** (backend) and **vanilla HTML/CSS/JS** (frontend), connected via **WebSockets** for instant, bidirectional messaging.
 
@@ -8,7 +15,6 @@ A clean, real-time chat application built with **Python FastAPI** (backend) and 
 
 LiveChat allows multiple users to join a shared chat room and exchange messages instantly — no page refreshes required. Messages are broadcast to all connected users in real time using the WebSocket protocol.
 
-This project was built as a Full Stack Development internship deliverable, demonstrating integration between a FastAPI WebSocket backend and a modern, responsive frontend.
 
 ---
 
@@ -112,24 +118,18 @@ http://127.0.0.1:8000
 
 Open this URL in **two or more browser tabs** to simulate multiple users chatting in real time.
 
-### Optional: specify a custom host/port
 
-```bash
-uvicorn main:app --host 0.0.0.0 --port 8080 --reload
-```
 
 ---
 
+
+
 ## How It Works
 
-1. **User visits** `http://localhost:8000` and enters a username.
-2. The browser opens a **WebSocket connection** to `/ws/{username}`.
-3. The FastAPI server **accepts** the connection and adds it to the connection pool.
-4. A **join notification** is broadcast to all connected users.
-5. When a user types and sends a message, it is sent over the WebSocket to the server.
-6. The server **broadcasts** the message (with the sender's username) to every connected client.
-7. All clients **render** the message instantly without any page reload.
-8. When a user leaves (closes the tab or clicks Leave), a **disconnect notification** is broadcast.
+1. User enters a username and joins the chat.
+2. A WebSocket connection is established with the FastAPI server.
+3. Messages are broadcast to all connected users in real time.
+4. Join/leave notifications and online user counts are updated automatically.
 
 ### WebSocket Message Format
 
