@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LiveChat — Real-Time Chat App</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div id="splash-screen" class="splash-screen">
+    <div class="stars" id="stars"></div>
+    <div class="watermelon-wrap" id="watermelonWrap">
+      <svg id="watermelon" class="watermelon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="58" fill="#4CAF50"/>
+        <circle cx="60" cy="60" r="52" fill="#e8f5e9"/>
+        <circle cx="60" cy="60" r="46" fill="#e53935"/>
+        <ellipse cx="45" cy="52" rx="4" ry="6" fill="#1a1a1a" transform="rotate(-20 45 52)"/>
+        <ellipse cx="65" cy="45" rx="4" ry="6" fill="#1a1a1a" transform="rotate(10 65 45)"/>
+        <ellipse cx="75" cy="65" rx="4" ry="6" fill="#1a1a1a" transform="rotate(30 75 65)"/>
+        <ellipse cx="50" cy="72" rx="4" ry="6" fill="#1a1a1a" transform="rotate(-10 50 72)"/>
+        <ellipse cx="60" cy="60" rx="4" ry="6" fill="#1a1a1a" transform="rotate(15 60 60)"/>
+        <ellipse cx="42" cy="38" rx="9" ry="6" fill="rgba(255,255,255,0.25)" transform="rotate(-30 42 38)"/>
+      </svg>
+    </div>
+    <div class="burst-container" id="burstContainer"></div>
+    <div class="splash-content" id="splashContent">
+      <div class="splash-text">wanna do chat with buddies&nbsp;😏</div>
+      <button class="enter-btn" id="enterBtn">
+        <svg viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg" width="80" height="40">
+          <ellipse cx="40" cy="32" rx="38" ry="14" fill="#f5c518"/>
+          <path d="M2,20 Q10,2 20,10 Q28,4 34,12 Q40,6 46,12 Q52,4 60,10 Q70,2 78,20 Z" fill="#f5c518"/>
+        </svg>
+        <span>Enter</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="username-screen" class="username-screen hidden">
+    <div class="bat-beam"></div>
+    <div class="bat-card">
+      <div class="bat-logo">
+        <svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg" width="100">
+          <ellipse cx="60" cy="48" rx="56" ry="18" fill="#f5c518"/>
+          <path d="M4,32 Q15,4 30,16 Q40,6 48,18 Q60,8 72,18 Q80,6 90,16 Q105,4 116,32 Z" fill="#f5c518"/>
+        </svg>
+      </div>
+      <h2 class="bat-title">Who Are You?</h2>
+      <p class="bat-subtitle">Choose your identity, hero.</p>
+      <div class="bat-input-wrap">
+        <input id="username-input" type="text" class="bat-input" placeholder="e.g. DarkKnight" maxlength="24" autocomplete="off"/>
+        <span id="username-error" class="bat-error"></span>
+      </div>
+      <button id="join-btn" class="bat-join-btn">JOIN THE CHAT</button>
+    </div>
+  </div>
+
+  <div id="chat-screen" class="chat-screen hidden">
+  <!-- Rain effect layer -->
+  <div class="rain" id="rain"></div>
+    <header class="chat-header">
+      <div class="header-left">
+        <div class="logo-mark">🍉</div>
+        <span class="header-title">BuddyChat</span>
+      </div>
+      <div class="header-right">
+        <span class="online-badge">
+          <span class="online-dot"></span>
+          <span id="online-count">1</span> online
+        </span>
+        <div class="my-avatar-wrap">
+          <div class="avatar" id="my-avatar"></div>
+          <span class="user-pill" id="current-user-pill">You</span>
+        </div>
+        <button id="leave-btn" class="leave-btn">Leave</button>
+      </div>
+    </header>
+
+    <main class="chat-body">
+      <div id="messages" class="messages" role="log" aria-live="polite"></div>
+    </main>
+
+    <div class="emoji-bar">
+      <span class="emoji-label">React:</span>
+      <button class="emoji-btn" data-emoji="😂">😂</button>
+      <button class="emoji-btn" data-emoji="❤️">❤️</button>
+      <button class="emoji-btn" data-emoji="🔥">🔥</button>
+      <button class="emoji-btn" data-emoji="👍">👍</button>
+      <button class="emoji-btn" data-emoji="😮">😮</button>
+      <button class="emoji-btn" data-emoji="💀">💀</button>
+      <button class="emoji-btn" data-emoji="🍉">🍉</button>
+    </div>
+
+    <footer class="chat-footer">
+      <div class="input-bar">
+        <input id="message-input" type="text" class="msg-field" placeholder="Type something cool…" maxlength="500" autocomplete="off"/>
+        <button id="send-btn" class="send-btn">
+          Send
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+            <path d="M3.478 2.405a.75.75 0 0 0-.926.94l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.405Z"/>
+          </svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
